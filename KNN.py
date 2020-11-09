@@ -1,18 +1,18 @@
 import numpy as np
 import pandas as pd
 
-training_data = pd.read_csv('/Users/avinashronanki/Downloads/ml_classification/storepurchasedata.csv')
+training_data = pd.read_csv('/Users/avinashronanki/Downloads/ml_classification/storepurchasedata.csv') # load it into pandas 
 
-training_data.describe()
+training_data.describe() # stat info the data 
 
-X = training_data.iloc[:, :-1].values
-y = training_data.iloc[:,-1].values
+X = training_data.iloc[:, :-1].values # independent variables 
+y = training_data.iloc[:,-1].values   # dependent variable 
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size =.20,random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size =.20,random_state=0)  # splitting the data 80:20 train/test
 
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
+from sklearn.preprocessing import StandardScaler # scaling the data 
+sc = StandardScaler() 
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
