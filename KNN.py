@@ -18,46 +18,46 @@ X_test = sc.transform(X_test)
 
 from sklearn.neighbors import KNeighborsClassifier
 # minkowski is for ecledian distance
-classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
+classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2) # model
 
 # Model training
 classifier.fit(X_train, y_train)
 
 y_pred = classifier.predict(X_test)
-y_prob = classifier.predict_proba(X_test)[:,1]
+y_prob = classifier.predict_proba(X_test)[:,1] #probability of the purchase 
 
 from sklearn.metrics import confusion_matrix
 
-cm = confusion_matrix(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred) 
 
 from sklearn.metrics import accuracy_score
 
-print(accuracy_score(y_test,y_pred))
+print(accuracy_score(y_test,y_pred)) # 0.875
 
 
 from sklearn.metrics import classification_report
 
-print(classification_report(y_test,y_pred))
+print(classification_report(y_test,y_pred)) # precision , recall and F1 score 
 
 
-new_prediction = classifier.predict(sc.transform(np.array([[40,20000]])))
+new_prediction = classifier.predict(sc.transform(np.array([[40,20000]]))) #  new value for testing the model
 
-new_prediction_proba = classifier.predict_proba(sc.transform(np.array([[40,20000]])))[:,1]
+new_prediction_proba = classifier.predict_proba(sc.transform(np.array([[40,20000]])))[:,1] # probablity 
 
-new_pred = classifier.predict(sc.transform(np.array([[42,50000]])))
+new_pred = classifier.predict(sc.transform(np.array([[42,50000]]))) #test2 
 
-new_pred_proba = classifier.predict_proba(sc.transform(np.array([[42,50000]])))[:,1]
+new_pred_proba = classifier.predict_proba(sc.transform(np.array([[42,50000]])))[:,1] #test2 
 
 
 
-# Picking the Model and Standard Scaler
+#Picking the Model and Standard Scaler
 
 import pickle
 
-model_file = "classifier.pickle"
+model_file = "classifier.pickle" # kn model 
 
-pickle.dump(classifier, open(model_file,'wb'))
+pickle.dump(classifier, open(model_file,'wb')) #(binary file )
 
-scaler_file = "sc.pickle"
+scaler_file = "sc.pickle" # scalar object 
 
-pickle.dump(sc, open(scaler_file,'wb'))
+pickle.dump(sc, open(scaler_file,'wb')) #(binary file )
