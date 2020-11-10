@@ -90,7 +90,7 @@ predicted_42_50000
 
 torch.save(model,'customer_buy.pt')
 
-!ls
+
 
 restored_model = torch.load('customer_buy.pt')
 
@@ -104,7 +104,6 @@ model.state_dict()
 
 torch.save(model.state_dict(),'customer_buy_state_dict')
 
-!ls
 
 new_predictor = Net()
 
@@ -113,7 +112,7 @@ y_cust_20_40000
 
 !zip -r customer_buy_state_dict.zip customer_buy_state_dict
 
-!ls
+
 
 from google.colab import files
 
