@@ -1,0 +1,8 @@
+mlflow
+pytorch
+tensorflow 
+pickle
+flask
+wget
+request
+unzip
